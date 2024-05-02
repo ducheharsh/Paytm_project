@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const argon2 = require("argon2");
 const { number } = require('zod');
 
-mongoose.connect("mongodb+srv://ducheharsh:hd123@cluster0.sk8fkkq.mongodb.net/Paytm")
+mongoose.connect("//mongourl")
 
 const UserSchema = new mongoose.Schema({
     username:{
