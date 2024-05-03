@@ -2,11 +2,13 @@
 
 ## Libraries used for frontend:
 
+<img src="https://tailwindcss.com/_next/static/media/tailwindcss-logotype-white.944c5d0ef628083bb316f9b3d643385c86bcdb3d.svg" alt="drawing" width="300"/>
 
-<img src="https://github.com/ducheharsh/Paytm_project/assets/79721045/52978710-72f1-46a8-b4d8-d17f43b9d309" alt="drawing" width="300"/>
+<img src="https://github.com/ducheharsh/Paytm_project/assets/79721045/52978710-72f1-46a8-b4d8-d17f43b9d309" alt="drawing" width="250"/>
 
 <img src="https://user-images.githubusercontent.com/8939680/57233884-20344080-6fe5-11e9-8df3-0df1282e1574.png" alt="drawing" width="200"/>
 
+**TailwindCSS** : For Styling
 
 **React-Router_Dom** : For Routing
 
