@@ -15,10 +15,15 @@ router.get('/balance', userAuthetication, async(req, res)=>{
     const userAccount = await Account.findOne({
         userId
     })
+    const userLogin = await User.findOne({
+        _id:userId
+    })
 
+    const username = userLogin.firstName
     const balance = userAccount.balance
 
     res.status(200).json({
+        username:username,
         balance:balance
     })
 })
