@@ -6,6 +6,10 @@ const { Account, User } = require("../db")
 const { default: mongoose } = require("mongoose")
 const router = express.Router()
 router.use(express.json())
+const z = require("zod")
+
+
+const amountSchema = z.number().lte(100000).positive();
 
 
 router.get('/balance', userAuthetication, async(req, res)=>{
@@ -30,6 +34,18 @@ router.get('/balance', userAuthetication, async(req, res)=>{
 
 
 router.post('/transfer', userAuthetication, async(req, res)=>{
+
+    console.log(req.body.amount)
+
+    const parsed = amountSchema.safeParse(req.body.amount)
+
+    if(!parsed.success){
+        res.status(400).json({
+            error:parsed.error
+        })
+        return;
+    }
+
     const session = await mongoose.startSession();
 
     session.startTransaction();

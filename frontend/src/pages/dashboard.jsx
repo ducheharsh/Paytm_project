@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Appbar } from "../components/Appbar";
 import axios from "axios";
-import App from "../App";
+
 import { BalanceComp } from "../components/BalanceComp";
 import { UsersComp } from "../components/UsersComp";
 
@@ -14,7 +14,6 @@ export function Dashboard(){
     const [username, setUsername] = useState("")
     const [balance, setBalance] = useState("")
    
-
 
 
     useEffect(() => {

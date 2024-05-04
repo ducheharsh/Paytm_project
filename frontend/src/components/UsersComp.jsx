@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { InputComp } from "./InputComp";
 import axios from "axios";
 import { Button } from "./Button";
+import { useNavigate } from "react-router-dom";
 
 export function UsersComp(){
 
@@ -54,6 +55,8 @@ export function UsersComp(){
 }
 
 function EachUserTile({user}){
+    const navigate = useNavigate();
+
     return <div className="grid grid-cols-2 px-2 py-1">
         
     <div className="justify-self-start text-md flex">
@@ -66,7 +69,11 @@ function EachUserTile({user}){
 
         </div>
         <div className="justify-self-end w-25 h-25">
-            <Button label="Send Money"/>
+            <Button onClick={()=>{
+                localStorage.setItem('toAccountId', user._id)
+                localStorage.setItem('toAccountName', user.firstName + " " + user.lastName)
+                navigate('/send')
+            }} label="Send Money"/>
         </div>
     </div>
 
