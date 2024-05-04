@@ -17,7 +17,6 @@
 ---
 * Planning to use React Recoil instead of traditonal react state hooks for state management soon
 * Also gonna add debouncing for the dashboard search user inputs for more optimization
-* Money Transfer page coming soon
 
 ## SignUp Page
 
@@ -30,3 +29,8 @@
 ## User Dashboard
 
 <img width="1440" alt="Screenshot 2024-05-03 at 5 59 45 PM" src="https://github.com/ducheharsh/Paytm_project/assets/79721045/b20bfc50-25de-456f-b7d9-9ef074d63ad5">
+
+## Send Money Page
+
+<img width="1440" alt="Screenshot 2024-05-04 at 10 57 32 AM" src="https://github.com/ducheharsh/Paytm_project/assets/79721045/00b4ea18-0ee6-45f9-86c3-f6d47248dd48">
+
