@@ -5,45 +5,50 @@ import axios from "axios";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 
+function useDebouceValue(inputValue, delay){
+    const [debounceValue, setDebounceValue] = useState(inputValue)
+
+    useEffect(()=>{
+        const timeout = setTimeout(()=>{
+            setDebounceValue(inputValue)
+        }, delay)
+
+        return()=>{
+            clearTimeout(timeout)
+        }
+    }, [inputValue, delay])
+    
+    return debounceValue
+}
+
+
 export function UsersComp(){
-
     const [filteredUsers, setFilteredUsers] = useState([])
-
-
-    useEffect(() => {
-        ( async() => {
-            try {
-                const res = await axios.get("http://localhost:3000/api/v1/user/bulk/", {
-                    headers:{
-                        authorization:localStorage.getItem('token')
-                    }
-                });
-                console.log(res.data)
+    const [inputQuery , setInputQuery] = useState()
+    const debounceValue = useDebouceValue(inputQuery, 500)
+    
+    useEffect(() => {     
+            axios.get("http://localhost:3000/api/v1/user/bulk/", {
+                headers:{
+                    authorization:localStorage.getItem('token')
+                },
+                params:{
+                    filter:debounceValue
+                }
+            }).then(res => {
                 setFilteredUsers(res.data.user);
-            } catch (error) {
+            }).catch(error => {
                 console.error(error);
-            }
-        })();
-    }, []);
+            });
+
+    }, [debounceValue]);
 
 
 
     return <div className="m-4">
+
         <InputComp onChange={async(e) => {
-            try {
-                const res = await axios.get("http://localhost:3000/api/v1/user/bulk/", {
-                    headers:{
-                        authorization:localStorage.getItem('token')
-                    },
-                    params:{
-                        filter:e.target.value
-                    }
-                });
-                console.log(res.data)
-                setFilteredUsers(res.data.user);
-            } catch (error) {
-                console.error(error);
-            }
+            setInputQuery(e.target.value)  
         }
 
         } label="Users"/>

@@ -6,11 +6,7 @@ import { BalanceComp } from "../components/BalanceComp";
 import { UsersComp } from "../components/UsersComp";
 
 
-
-
-export function Dashboard(){
-    document.body.className = 'bg-white-900'
-
+function useGetData(){
     const [username, setUsername] = useState("")
     const [balance, setBalance] = useState("")
    
@@ -32,7 +28,12 @@ export function Dashboard(){
         })();
     }, []);
 
+    return {username, balance}
+}
 
+export function Dashboard(){
+    document.body.className = 'bg-white-900'
+    const {username, balance} = useGetData();
     return <div >
     <Appbar firstName={username}/>
     <BalanceComp balance={balance}/>

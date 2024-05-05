@@ -149,8 +149,11 @@ router.post("/", userAuthetication , async(req, res)=>{
 
 router.get("/bulk/", userAuthetication, async (req, res) => {
     const filter = req.query.filter || "";
-
+    const userId = req.userId
     const users = await User.find({
+        _id: {
+            $ne: userId
+        },
         $or: [{
             firstName: {
                 "$regex": filter
@@ -160,7 +163,8 @@ router.get("/bulk/", userAuthetication, async (req, res) => {
                 "$regex": filter
             }
         }]
-    })
+    } )
+    
 
     res.json({
         user: users.map(user => ({

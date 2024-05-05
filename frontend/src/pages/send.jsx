@@ -3,7 +3,7 @@ import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { InputComp } from "../components/InputComp";
 import { SubHeading } from "../components/SubHeading";
-
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
 
@@ -11,6 +11,8 @@ import { ErrorMessage } from "../components/ErrorMessage";
 
 
 export function Send(){
+
+    const navigate = useNavigate()
 
     const[issues, setIssues] = useState([])
     
@@ -55,12 +57,19 @@ export function Send(){
                 }).then((response) => {
                     console.log(response)
                     alert("Money Sent Successfully")
+                    localStorage.removeItem('toAccountId')
+                    localStorage.removeItem('toAccountName')
+                    navigate('/dashboard')
+                    
                 }
             )
         }catch(error){
             setIssues(error.response.data.error.issues)
             console.error(error)
             alert("Money Transfer Failed")
+            navigate('/dashboard')
+            localStorage.removeItem('toAccountId')
+            localStorage.removeItem('toAccountName')
         }
         }} label="Send Money"/>
     </div>
