@@ -15,8 +15,9 @@
 **Axios** : For Backend calls
 
 ---
-* Planning to use React Recoil instead of traditonal react state hooks for state management soon
-* Also gonna add debouncing for the dashboard search user inputs for more optimization
+- [ ] Planning to use React Recoil instead of traditonal react state hooks for state management soon
+- [x] ~Also gonna add debouncing for the dashboard search user inputs for more optimization~
+- [x] ~Money Transfer page coming soon~
 
 ## SignUp Page
 
