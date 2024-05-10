@@ -100,8 +100,8 @@ router.post("/signin", async(req, res)=>{
                     msg:"Invalid password"
                 })
             }
-        
 })
+
 
 router.post("/", userAuthetication , async(req, res)=>{
     const elule = UserUpdateSchemaZod.safeParse(req.body);

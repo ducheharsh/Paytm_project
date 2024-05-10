@@ -53,7 +53,6 @@ export function SignIn(){
                 path:["username"]
             }])
         }
-        
         }
             catch(error){
                 console.log(response.msg)
@@ -63,8 +62,8 @@ export function SignIn(){
         }} />
 
         <div className="py-3">
-            
-        {issues.map((x) => <ErrorMessage message={x.message} code={x.path[0]}/>)}
+        {console.log(issues)}
+        {(issues && issues.length > 0) ? (issues.map((x) => <ErrorMessage message={x.message} code={x.path[0]} />)) : <> </>}
             
         </div>
         </div>
